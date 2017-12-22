@@ -11,7 +11,7 @@ module.exports = {
             if (err) {
                 res.send(err);
             } else {
-                if (super_token.access <= req.body.access) {
+                if (super_token == undefined || super_token.access <= req.body.access) {
                     res.send(new Error('unauthorized action'));
                 } else {
                     var new_token = new Token(req.body);
@@ -33,8 +33,7 @@ module.exports = {
                 console.log("authorize token error: " + err);
                 callback(err, null);
             } else {
-                console.log("authorize > required access=" + required_access.toString() + " found access=" + token.access.toString());
-                if (token.access < required_access) {
+                if (token == undefined || token.access < required_access) {
                     callback(new Error('unauthorized action'), token);
                 } else {
                     callback(null, token);
