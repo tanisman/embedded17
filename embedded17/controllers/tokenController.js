@@ -8,6 +8,7 @@ function findToken(token_id, callback) {
 
 module.exports = {
     createToken: function (req, res) {
+        console.log("createToken() => my_token=" + req.body.my_token);
         findToken(req.body.my_token, function (err, super_token) {
             if (err) {
                 res.status(400).send({ success: 0, error: err.message });
