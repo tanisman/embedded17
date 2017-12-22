@@ -33,6 +33,7 @@ module.exports = {
                 console.log("authorize token error: " + err);
                 callback(err, null);
             } else {
+                console.log(token);
                 if (token == undefined || token.access < required_access) {
                     callback(new Error('unauthorized action'), token);
                 } else {
