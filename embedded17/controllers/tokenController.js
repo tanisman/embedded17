@@ -9,17 +9,17 @@ module.exports = {
     createToken: function (req, res) {
         findToken(req.body.my_token, function (err, super_token) {
             if (err) {
-                res.status(400).send(err);;
+                res.status(400).send({ success: 0, error: err.message });
             } else {
-                if (super_token == undefined || super_token.access <= req.body.access) {
-                    res.send(new Error('unauthorized action'));
+                if (super_token == null || super_token.access <= req.body.access) {
+                    res.status(400).send({ success: 0, error: 'unauthorized action' });
                 } else {
                     var new_token = new Token(req.body);
                     new_token.save(function (err, token) {
                         if (err) {
-                            res.status(400).send(err);;
+                            res.status(400).send({ success: 0, error: err.message });
                         } else {
-                            res.json(token);
+                            res.json({ success: 1, created: token });
                         }
                     });
                 }
