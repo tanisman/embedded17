@@ -8,12 +8,12 @@ module.exports = {
     logSensorData: function (req, res) {
         tokenController.authorizeToken(req.body.my_token, 255, function (err, token) {
             if (err) {
-                res.send(err);
+                res.status(400).send(err);;
             } else {
                 var new_log = new SensorData(req.body);
                 new_log.save(function (err, log) {
                     if (err) {
-                        res.send(err);
+                        res.status(400).send(err);;
                     } else {
                         res.json(log);
                     }
@@ -25,11 +25,12 @@ module.exports = {
     listSensorDataLogs: function (req, res) {
         tokenController.authorizeToken(req.params.my_token, 1, function (err, token) {
             if (err) {
-                res.send(err);
+                console.log("listSensorDataLogs error: " + err);
+                res.status(400).send(err);
             } else {
                 SensorData.find({}, function (err, log) {
                     if (err) {
-                        res.send(err);
+                        res.status(400).send(err);
                     } else {
                         res.json(log);
                     }
