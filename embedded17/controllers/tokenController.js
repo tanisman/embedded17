@@ -3,7 +3,7 @@ var mongoose = require('mongoose'),
     Token = mongoose.model('Tokens');
 
 function findToken(token_id, callback) {
-    Token.find(mongoose.Schema.Types.ObjectId(token_id), callback);
+    Token.findOne(mongoose.Schema.Types.ObjectId(token_id), callback);
 }
 module.exports = {
     createToken: function (req, res) {
