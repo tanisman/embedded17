@@ -30,8 +30,10 @@ module.exports = {
     authorizeToken: function (my_token, required_access, callback) {
         findToken(my_token, function (err, token) {
             if (err) {
+                console.log("authorize token error: " + err);
                 callback(err, null);
             } else {
+                console.log("authorize > required access=" + required_access.toString() + " found access=" + token.access.toString());
                 if (token.access < required_access) {
                     callback(new Error('unauthorized action'), token);
                 } else {
