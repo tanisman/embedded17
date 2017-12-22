@@ -1,4 +1,7 @@
 ﻿'use strict';
+var mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://shine:742159863a@localhost/embedded17'); 
 var debug = require('debug');
 var express = require('express');
 var path = require('path');
@@ -7,8 +10,13 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+
+var tokenModel = require('./models/tokenModel');
+var sensorDataModel = require('./models/sensorDataModel');
+
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var sensor = require('./routes/sensor');
+var token = require('./routes/token');
 
 var app = express();
 
@@ -25,7 +33,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
+app.use('/token', token);
+app.use('/sensor', sensor);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
