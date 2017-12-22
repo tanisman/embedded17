@@ -2,6 +2,9 @@
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://shine:742159863a@localhost/embedded17'); 
+var tokenModel = require('./models/tokenModel');
+var sensorDataModel = require('./models/sensorDataModel');
+
 var debug = require('debug');
 var express = require('express');
 var path = require('path');
@@ -10,9 +13,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-
-var tokenModel = require('./models/tokenModel');
-var sensorDataModel = require('./models/sensorDataModel');
 
 var routes = require('./routes/index');
 var sensor = require('./routes/sensor');
