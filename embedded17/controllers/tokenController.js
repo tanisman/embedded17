@@ -9,7 +9,7 @@ module.exports = {
     createToken: function (req, res) {
         findToken(req.body.my_token, function (err, super_token) {
             if (err) {
-                res.send(err);
+                res.status(400).send(err);;
             } else {
                 if (super_token == undefined || super_token.access <= req.body.access) {
                     res.send(new Error('unauthorized action'));
@@ -17,7 +17,7 @@ module.exports = {
                     var new_token = new Token(req.body);
                     new_token.save(function (err, token) {
                         if (err) {
-                            res.send(err);
+                            res.status(400).send(err);;
                         } else {
                             res.json(token);
                         }
