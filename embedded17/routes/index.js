@@ -2,6 +2,7 @@
 var mongoose = require('mongoose'),
     SensorData = mongoose.model('SensorDatas');
 var express = require('express');
+var tokenController = require('../controllers/tokenController');
 var router = express.Router();
 
 
