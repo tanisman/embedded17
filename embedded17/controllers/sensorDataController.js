@@ -34,7 +34,7 @@ module.exports = {
                     } else {
                         res.json({ success: 1, logs: log });
                     }
-                }).populate('measure_unit');
+                }).populate('measure_unit', 'name');
             }
         });
     }

@@ -1,5 +1,18 @@
 ﻿extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+    h1= title
+    table(border=1)
+        tr
+            th Measure Unit
+            th Time
+            th Temperature
+            th Humidity
+        for result in results
+            tr
+                td #{ result.measure_unit.name }
+                td #{ result.log_date }
+                td #{ result.temperature }
+                td #{ result.humidity }
+
+        
