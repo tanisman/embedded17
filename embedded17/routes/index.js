@@ -7,7 +7,7 @@ var router = express.Router();
 
 
 /* GET home page. */
-router.get('/', function (req, res) {
+router.get('/:my_token', function (req, res) {
     tokenController.authorizeToken(req.params.my_token, 1, function (err, token) {
         if (err) {
             res.status(400).send({ success: 0, error: err.message });
