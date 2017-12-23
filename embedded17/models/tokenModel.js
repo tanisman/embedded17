@@ -9,7 +9,7 @@ var TokenSchema = new Schema({
         default: "No Name"
     },
     access: {
-        type: Number,   
+        type: Number,
         default: 0
     },
     added_date: {
