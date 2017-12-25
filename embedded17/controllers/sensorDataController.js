@@ -42,7 +42,6 @@ module.exports = {
                     if (err) {
                         res.status(400).send({ success: 0, error: err.message });
                     } else {
-                        log.reverse();
                         res.json({ success: 1, logs: log });
                     }
                 }).populate('measure_unit', 'name');
