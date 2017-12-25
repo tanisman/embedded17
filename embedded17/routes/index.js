@@ -17,7 +17,7 @@ router.get('/:my_token', function (req, res) {
                     res.status(400);
                     res.render('error', { message: err.message, error: {} });
                 } else {
-                    res.render('index', { title: 'Embedded17', results: log });
+                    res.render('index', { title: 'Embedded17', results: log.reverse() });
                 }
             }).populate('measure_unit', 'name');
         }

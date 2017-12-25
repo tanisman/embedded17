@@ -9,21 +9,8 @@ block script
              });
            });
 block content
-    - function reverseTableRows(tableId) {
-    -      var table = document.getElementById(tableId),
-    -      newTbody = document.createElement('tbody'),
-    -      oldTbody = table.tBodies[0],
-    -      rows = oldTbody.rows,
-    -      i = rows.length - 1;
-    - 
-    -      while (i >= 0) {
-    -          newTbody.appendChild(rows[i]);
-    -          i -= 1;
-    -     }
-    -     oldTbody.parentNode.replaceChild(newTbody, oldTbody);
-    - };
     h1= title
-    table(id='sensor_table' border=1 onload=reverseTableRows('sensor_table'))
+    table(id='sensor_table' border=1)
         tr
             th Measure Unit
             th Time
