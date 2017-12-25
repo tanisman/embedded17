@@ -20,8 +20,6 @@ block content
             th Temperature
             th Humidity
         for result in results
-            - result.temperature = parseInt(Math.round(result.temperature))
-            - result.humidity = parseInt(Math.round(result.humidity)
             tr
                 td #{ result.measure_unit.name }
                 td #{ result.log_date }
