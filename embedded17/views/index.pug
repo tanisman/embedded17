@@ -69,9 +69,9 @@ block content
 -            "position": "bottom-right"
 -        }
 -    });
-    chart.addListener("dataUpdated", zoomChart);
-    zoomChart();
-    function zoomChart() { chart.zoomToIndexes(chart.dataProvider.length - 20, chart.dataProvider.length - 1); };
+-    chart.addListener("dataUpdated", zoomChart);
+-    zoomChart();
+-    function zoomChart() { chart.zoomToIndexes(chart.dataProvider.length - 20, chart.dataProvider.length - 1); };
 
     div(style='overflow-x:auto;')
         table(id='sensor_table' border=0)
