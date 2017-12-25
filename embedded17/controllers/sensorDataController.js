@@ -3,6 +3,7 @@ var mongoose = require('mongoose'),
     SensorData = mongoose.model('SensorDatas');
 
 var tokenController = require('./tokenController');
+var pug = require('pug');
 
 module.exports = {
     logSensorData: function (req, res) {
@@ -15,6 +16,13 @@ module.exports = {
                     if (err) {
                         res.status(400).send({ success: 0, error: err.message });
                     } else {
+                        var io = req.app.get('socketio');
+                        var html = pug.compile(`tr
+                        td #{ measure_unit.name }
+                        td #{ log_date }
+                        td #{ temperature }
+                        td #{ humidity }`)(log);
+                        io.sockets.emit('update table', html);
                         res.json({ success: 1, created: log });
                     }
                 });
@@ -34,7 +42,7 @@ module.exports = {
                     } else {
                         res.json({ success: 1, logs: log });
                     }
-                }).populate('measure_unit', 'name');
+                }).populate('measure_unit', 'name').sort({ log_date: -1 });
             }
         });
     }

@@ -1,8 +1,17 @@
 ﻿extends layout
 
+block script
+    script.
+            $(function () {
+            var socket = io();
+            socket.on('update table', function(msg){
+              $('#sensor_table tr:first').after(msg);
+             });
+           });
+
 block content
     h1= title
-    table(border=1)
+    table(id='sensor_table' border=1)
         tr
             th Measure Unit
             th Time

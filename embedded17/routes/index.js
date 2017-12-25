@@ -6,7 +6,6 @@ var tokenController = require('../controllers/tokenController');
 var router = express.Router();
 
 
-/* GET home page. */
 router.get('/:my_token', function (req, res) {
     tokenController.authorizeToken(req.params.my_token, 1, function (err, token) {
         if (err) {
