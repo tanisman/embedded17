@@ -83,7 +83,7 @@ app.use(function (err, req, res, next) {
 
 app.set('port', process.env.PORT || 3000);
 
-var server = http.listen(app.get('port'), "0.0.0.0", function () {
+var server = http.listen(app.get('port'), "164.132.24.26", function () {
     debug('Express server listening on port ' + server.address().port);
 });
 
