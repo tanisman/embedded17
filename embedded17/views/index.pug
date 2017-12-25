@@ -17,12 +17,12 @@ block content
             th Temperature
             th Humidity
         for result in results
-            - var temp = parseInt(Math.round(result.temperature))
-            - var hum = parseInt(Math.round(result.humidity)
+            - result.temperature = parseInt(Math.round(result.temperature))
+            - result.humidity = parseInt(Math.round(result.humidity)
             tr
                 td #{ result.measure_unit.name }
                 td #{ result.log_date }
-                td #{ temp } &#8451
-                td #{ hum }%
+                td #{ result.temperature } &#8451
+                td #{ result.humidity }%
 
         
