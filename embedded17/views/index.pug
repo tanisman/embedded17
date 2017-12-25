@@ -10,6 +10,9 @@ block script
            });
 block content
     h1= title
+    for result in results
+        - result.temperature = parseInt(Math.round(result.temperature));
+        - result.humidity = parseInt(Math.round(result.humidity));
     table(id='sensor_table' border=1)
         tr
             th Measure Unit
