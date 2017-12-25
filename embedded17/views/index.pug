@@ -57,10 +57,12 @@ block content
             }],
             "chartScrollbar": {},
             "chartCursor": {
+                "categoryBalloonDateFormat": "JJ:NN, DD MMMM"
                 "cursorPosition": "mouse"
             },
             "categoryField": "log_date",
             "categoryAxis": {
+                "minPeriod": "mm",
                 "parseDates": true,
                 "axisColor": "#DADADA",
                 "minorGridEnabled": true
@@ -68,6 +70,7 @@ block content
             "export": {
                 "enabled": true,
                 "position": "bottom-right"
+                "dateFormat": "YYYY-MM-DD HH:NN:SS"
             }
         });
         chart.addListener("dataUpdated", zoomChart);
