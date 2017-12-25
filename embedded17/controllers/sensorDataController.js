@@ -21,11 +21,11 @@ module.exports = {
                         td #{ measure_unit.name }
                         td #{ log_date }
                         td #{ temperature }
-                        td #{ humidity }`)(log);
+                        td #{ humidity }`)(log.populate('measure_unit', 'name'));
                         io.sockets.emit('update table', html);
                         res.json({ success: 1, created: log });
                     }
-                }).populate('measure_unit', 'name');
+                });
             }
         });
     },
