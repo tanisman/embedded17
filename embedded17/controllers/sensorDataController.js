@@ -17,13 +17,15 @@ module.exports = {
                         res.status(400).send({ success: 0, error: err.message });
                     } else {
                         var io = req.app.get('socketio');
-                        var html = pug.compile(`tr
-                        td #{ measure_unit.name }
-                        td #{ log_date }
-                        td #{ temperature }
-                        td #{ humidity }`)(log.populate('measure_unit', 'name'));
-                        io.sockets.emit('update table', html);
-                        res.json({ success: 1, created: log });
+                        log.populate('measure_unit', function (err) {
+                            var html = pug.compile(`tr
+                            td #{ measure_unit.name }
+                            td #{ log_date }
+                            td #{ temperature }
+                            td #{ humidity }`)();
+                            io.sockets.emit('update table', html);
+                            res.json({ success: 1, created: log });
+                        });
                     }
                 });
             }
@@ -36,13 +38,13 @@ module.exports = {
                 console.log("listSensorDataLogs error: " + err);
                 res.status(400).send({ success: 0, error: err.message });
             } else {
-                SensorData.find({}, function (err, log) {
+                SensorData.find().sort({ log_date: -1 }).exec(function (err, log) {
                     if (err) {
                         res.status(400).send({ success: 0, error: err.message });
                     } else {
                         res.json({ success: 1, logs: log });
                     }
-                }).sort({ "log_date": -1 }).populate('measure_unit', 'name');
+                }).populate('measure_unit', 'name');
             }
         });
     }
