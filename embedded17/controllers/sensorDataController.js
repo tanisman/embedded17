@@ -18,14 +18,14 @@ module.exports = {
                     } else {
                         var io = req.app.get('socketio');
                         var html = pug.compile(`tr
-                        td #{ measure_unit }
+                        td #{ measure_unit.name }
                         td #{ log_date }
                         td #{ temperature }
                         td #{ humidity }`)(log);
                         io.sockets.emit('update table', html);
                         res.json({ success: 1, created: log });
                     }
-                });
+                }).populate('measure_unit', 'name');
             }
         });
     },
@@ -42,7 +42,7 @@ module.exports = {
                     } else {
                         res.json({ success: 1, logs: log });
                     }
-                }).sort({ log_date: -1 }).populate('measure_unit', 'name');
+                }).sort({ "log_date": -1 }).populate('measure_unit', 'name');
             }
         });
     }
