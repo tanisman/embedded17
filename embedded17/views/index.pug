@@ -72,6 +72,7 @@ block content
         chart.addListener("dataUpdated", zoomChart);
         zoomChart();
         function zoomChart() { chart.zoomToIndexes(chart.dataProvider.length - 20, chart.dataProvider.length - 1); };
+    div(id="chartdiv")
     div(style='overflow-x:auto;')
         table(id='sensor_table' border=0)
             tr
