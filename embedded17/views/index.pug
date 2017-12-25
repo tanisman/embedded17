@@ -10,9 +10,6 @@ block script
            });
 block content
     h1= title
-    for result in results
-        - result.temperature = parseInt(Math.round(result.temperature));
-        - result.humidity = parseInt(Math.round(result.humidity));
     script.
         var chartData = !{JSON.stringify(results).replace(/<\//g, '<\\/')}
         var chart = AmCharts.makeChart("chartdiv", {
@@ -76,6 +73,9 @@ block content
         chart.addListener("dataUpdated", zoomChart);
         zoomChart();
         function zoomChart() { chart.zoomToIndexes(chart.dataProvider.length - 20, chart.dataProvider.length - 1); };
+    for result in results
+        - result.temperature = parseInt(Math.round(result.temperature));
+        - result.humidity = parseInt(Math.round(result.humidity));
     div(id="chartdiv")
     div(style='overflow-x:auto;')
         table(id='sensor_table' border=0)
