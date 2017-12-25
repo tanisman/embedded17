@@ -18,11 +18,13 @@ module.exports = {
                     } else {
                         var io = req.app.get('socketio');
                         log.populate('measure_unit', function (err) {
+                            log.temperature = parseInt(Math.round(log.temperature));
+                            log.humidity = parseInt(Math.round(log.humidity));
                             var html = pug.compile(`tr
                             td #{ measure_unit.name }
                             td #{ log_date }
-                            td #{ temperature }
-                            td #{ humidity }`)(log);
+                            td #{ temperature } &#8451
+                            td #{ humidity }%`)(log);
                             io.sockets.emit('update table', html);
                             res.json({ success: 1, created: log });
                         });
