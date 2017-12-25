@@ -18,7 +18,7 @@ module.exports = {
                     } else {
                         var io = req.app.get('socketio');
                         var html = pug.compile(`tr
-                        td !{ measure_unit.name }
+                        td #{ measure_unit }
                         td #{ log_date }
                         td #{ temperature }
                         td #{ humidity }`)(log);
