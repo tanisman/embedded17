@@ -13,17 +13,18 @@ block content
     for result in results
         - result.temperature = parseInt(Math.round(result.temperature));
         - result.humidity = parseInt(Math.round(result.humidity));
-    table(id='sensor_table' border=1)
-        tr
-            th Measure Unit
-            th Time
-            th Temperature
-            th Humidity
-        for result in results
+    div (style='overflow-x:auto;')
+        table(id='sensor_table' border=1)
             tr
-                td #{ result.measure_unit.name }
-                td #{ result.log_date }
-                td #{ result.temperature } &#8451
-                td #{ result.humidity }%
+                th Measure Unit
+                th Time
+                th Temperature
+                th Humidity
+            for result in results
+                tr
+                    td #{ result.measure_unit.name }
+                    td #{ result.log_date }
+                    td #{ result.temperature } &#8451
+                    td #{ result.humidity }%
 
         
