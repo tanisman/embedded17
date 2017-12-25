@@ -14,64 +14,64 @@ block content
         - result.temperature = parseInt(Math.round(result.temperature));
         - result.humidity = parseInt(Math.round(result.humidity));
     script.
-        -var chart = AmCharts.makeChart("chartdiv", {
-        -    "type": "serial",
-        -    "theme": "light",
-        -    "legend": {
-        -        "useGraphSettings": true
-        -    },
-        -    "dataProvider": results,
-        -    "synchronizeGrid":true,
-        -    "valueAxes": [{
-        -        "id":"v1",
-        -        "axisColor": "#FF6600",
-        -        "axisThickness": 2,
-        -        "axisAlpha": 1,
-        -        "position": "left"
-        -    }, {
-        -        "id":"v2",
-        -        "axisColor": "#FCD202",
-        -        "axisThickness": 2,
-        -        "axisAlpha": 1,
-        -        "position": "right"
-        -    }],
-        -    "graphs": [{
-        -        "valueAxis": "v1",
-        -        "lineColor": "#FF6600",
-        -        "bullet": "round",
-        -        "bulletBorderThickness": 1,
-        -        "hideBulletsCount": 30,
-        -        "title": "Temperature",
-        -        "valueField": "temperature",
-        -       "fillAlphas": 0
-        -    }, {
-        -        "valueAxis": "v2",
-        -        "lineColor": "#2668f1",
-        -        "bullet": "square",
-        -        "bulletBorderThickness": 1,
-        -        "hideBulletsCount": 30,
-        -        "title": "yellow line",
-        -        "valueField": "humidity",
-        -       "fillAlphas": 0
-        -    }],
-        -    "chartScrollbar": {},
-        -    "chartCursor": {
-        -        "cursorPosition": "mouse"
-        -    },
-        -    "categoryField": "log_date",
-        -    "categoryAxis": {
-        -        "parseDates": true,
-        -        "axisColor": "#DADADA",
-        -        "minorGridEnabled": true
-        -    },
-        -    "export": {
-        -        "enabled": true,
-        -        "position": "bottom-right"
-        -    }
-        -});
-        -chart.addListener("dataUpdated", zoomChart);
-        -zoomChart();
-        -function zoomChart() { chart.zoomToIndexes(chart.dataProvider.length - 20, chart.dataProvider.length - 1); };
+        var chart = AmCharts.makeChart("chartdiv", {
+            "type": "serial",
+            "theme": "light",
+            "legend": {
+                "useGraphSettings": true
+            },
+            "dataProvider": results,
+            "synchronizeGrid":true,
+            "valueAxes": [{
+                "id":"v1",
+                "axisColor": "#FF6600",
+                "axisThickness": 2,
+                "axisAlpha": 1,
+                "position": "left"
+            }, {
+                "id":"v2",
+                "axisColor": "#FCD202",
+                "axisThickness": 2,
+                "axisAlpha": 1,
+                "position": "right"
+            }],
+            "graphs": [{
+                "valueAxis": "v1",
+                "lineColor": "#FF6600",
+                "bullet": "round",
+                "bulletBorderThickness": 1,
+                "hideBulletsCount": 30,
+                "title": "Temperature",
+                "valueField": "temperature",
+               "fillAlphas": 0
+            }, {
+                "valueAxis": "v2",
+                "lineColor": "#2668f1",
+                "bullet": "square",
+                "bulletBorderThickness": 1,
+                "hideBulletsCount": 30,
+                "title": "yellow line",
+                "valueField": "humidity",
+               "fillAlphas": 0
+            }],
+            "chartScrollbar": {},
+            "chartCursor": {
+                "cursorPosition": "mouse"
+            },
+            "categoryField": "log_date",
+            "categoryAxis": {
+                "parseDates": true,
+                "axisColor": "#DADADA",
+                "minorGridEnabled": true
+            },
+            "export": {
+                "enabled": true,
+                "position": "bottom-right"
+            }
+        });
+        chart.addListener("dataUpdated", zoomChart);
+        zoomChart();
+        function zoomChart() { chart.zoomToIndexes(chart.dataProvider.length - 20, chart.dataProvider.length - 1); };
     div(style='overflow-x:auto;')
         table(id='sensor_table' border=0)
             tr
