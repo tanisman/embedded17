@@ -18,7 +18,7 @@ module.exports = {
                     } else {
                         var io = req.app.get('socketio');
                         var html = pug.compile(`tr
-                        td #{ measure_unit.name }
+                        td !{ measure_unit.name }
                         td #{ log_date }
                         td #{ temperature }
                         td #{ humidity }`)(log);
@@ -42,7 +42,7 @@ module.exports = {
                     } else {
                         res.json({ success: 1, logs: log });
                     }
-                }).populate('measure_unit', 'name').sort({ log_date: -1 });
+                }).sort({ log_date: -1 }).populate('measure_unit', 'name');
             }
         });
     }
