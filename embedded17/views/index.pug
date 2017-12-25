@@ -14,13 +14,14 @@ block content
         - result.temperature = parseInt(Math.round(result.temperature));
         - result.humidity = parseInt(Math.round(result.humidity));
     script.
+        var chartData = !{JSON.stringify(results).replace(/<\//g, '<\\/')}
         var chart = AmCharts.makeChart("chartdiv", {
             "type": "serial",
             "theme": "light",
             "legend": {
                 "useGraphSettings": true
             },
-            "dataProvider": results,
+            "dataProvider": chartData,
             "synchronizeGrid":true,
             "valueAxes": [{
                 "id":"v1",
